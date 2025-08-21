@@ -179,7 +179,7 @@ export default function SaasShowcase() {
       <AnimatePresence>
         {activeProject && (
           <motion.div
-            className="absolute left-1/2 transform -translate-x-1/2 -top-8 z-50 top-popup"
+            className="absolute -top-8 z-50 top-popup"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
