@@ -208,12 +208,18 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <img
-          key={getCurrentImage()}
-          src={getCurrentImage()}
-          alt="Product Preview"
-          className="w-full h-full object-cover rounded-2xl"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={getCurrentImage()}
+            src={getCurrentImage()}
+            alt="Product Preview"
+            className="w-full h-full object-cover rounded-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
 
         {/* Stats Board - slides up from bottom when project is active */}
         <AnimatePresence>
