@@ -2,8 +2,9 @@ export const projects = [
   {
     id: 1,
     name: "Inkflow",
-    popupText: "Inkflow.com",
-    description: "Social Media Analytics Tool",
+    popupTextDesktop: "Revolutionary SaaS platform for modern businesses",
+    popupTextMobile: "Inkflow.com",
+    description: "Advanced business management solution",
     logo: "/images/product-logos/inkflow.png",
     images: [
       "/images/products/inkflow/1.png",
@@ -21,7 +22,8 @@ export const projects = [
   {
     id: 2,
     name: "Project Beta",
-    popupText: "AI-powered analytics dashboard for enterprises",
+    popupTextDesktop: "AI-powered analytics dashboard for enterprises",
+    popupTextMobile: "Project Beta",
     description: "Intelligent data insights platform",
     logo: "/images/products/try1/Rectangle 1000002352.png",
     images: [
@@ -40,7 +42,8 @@ export const projects = [
   {
     id: 3,
     name: "Project Gamma",
-    popupText: "Cloud-based collaboration tool for remote teams",
+    popupTextDesktop: "Cloud-based collaboration tool for remote teams",
+    popupTextMobile: "Project Gamma",
     description: "Seamless team collaboration platform",
     logo: "/images/products/try2/Rectangle 1000002352-1.png",
     images: [
@@ -60,7 +63,8 @@ export const projects = [
   {
     id: 4,
     name: "Project Delta",
-    popupText: "Advanced CRM solution for growing companies",
+    popupTextDesktop: "Advanced CRM solution for growing companies",
+    popupTextMobile: "Project Delta",
     description: "Customer relationship management platform",
     logo: "/images/products/example/example1.png",
     images: [
@@ -79,7 +83,8 @@ export const projects = [
   {
     id: 5,
     name: "Project Epsilon",
-    popupText: "Innovative payment processing platform",
+    popupTextDesktop: "Innovative payment processing platform",
+    popupTextMobile: "Project Epsilon",
     description: "Secure payment solutions for businesses",
     logo: "/images/products/try1/Rectangle 1000002352-4.png",
     images: [

@@ -191,7 +191,7 @@ export default function SaasShowcase() {
                   onClick={handleMobilePopupClick}
                   className="flex items-center gap-2 text-white text-sm"
                 >
-                  <span>{activeProject.popupText}</span>
+                  <span>{activeProject.popupTextMobile}</span>
                   <img 
                     src={activeProject.mobileIcon} 
                     alt="arrow" 
@@ -199,7 +199,7 @@ export default function SaasShowcase() {
                   />
                 </button>
               ) : (
-                <p className="text-white text-sm">{activeProject.popupText}</p>
+                <p className="text-white text-sm">{activeProject.popupTextDesktop}</p>
               )}
             </div>
           </motion.div>
