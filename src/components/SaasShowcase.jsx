@@ -208,7 +208,7 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.img
             key={getCurrentImage()}
             src={getCurrentImage()}
