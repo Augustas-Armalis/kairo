@@ -16,6 +16,12 @@ export default function SaasShowcase() {
       // Get all images from all project folders
       const allProjectImages = projects.flatMap(project => project.images);
       setAllImages(allProjectImages);
+      
+      // Set initial random image instead of always starting with index 0
+      if (allProjectImages.length > 0) {
+        const randomInitialIndex = Math.floor(Math.random() * allProjectImages.length);
+        setCurrentImageIndex(randomInitialIndex);
+      }
     };
     
     discoverImages();
