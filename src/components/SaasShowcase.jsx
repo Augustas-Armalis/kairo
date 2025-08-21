@@ -8,6 +8,7 @@ export default function SaasShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const [allImages, setAllImages] = useState([]);
   const [usedImages, setUsedImages] = useState([]);
+  const [lastShownImage, setLastShownImage] = useState('');
   const intervalRef = useRef(null);
   
   // Dynamically discover all images from products folders
@@ -48,8 +49,16 @@ export default function SaasShowcase() {
       setUsedImages([]);
     }
     
-    // Find images that haven't been used recently
-    let availableImages = allImages.filter((_, index) => !usedImages.includes(index));
+    // Find images that haven't been used recently AND are not the last shown image
+    let availableImages = allImages.filter((_, index) => 
+      !usedImages.includes(index) && allImages[index] !== lastShownImage
+    );
+    
+    // If no available images (all used or only last shown image available), 
+    // allow any image except the last shown one
+    if (availableImages.length === 0) {
+      availableImages = allImages.filter((_, index) => allImages[index] !== lastShownImage);
+    }
     
     // Occasionally shuffle the available images for extra randomness
     if (Math.random() < 0.3) { // 30% chance to shuffle
@@ -67,8 +76,15 @@ export default function SaasShowcase() {
       return selectedImageIndex;
     }
     
-    // Fallback: if somehow no available images, pick any random one
-    return Math.floor(Math.random() * allImages.length);
+    // Fallback: if somehow no available images, pick any random one except last shown
+    const fallbackImages = allImages.filter((_, index) => allImages[index] !== lastShownImage);
+    if (fallbackImages.length > 0) {
+      const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+      return allImages.indexOf(fallbackImages[randomIndex]);
+    }
+    
+    // Last resort: if only one image exists, return it
+    return 0;
   };
 
   // Random image cycling when no project is active
@@ -76,7 +92,9 @@ export default function SaasShowcase() {
     if (!activeProject && allImages.length > 0) {
       // Global random cycling through all project images
       intervalRef.current = setInterval(() => {
-        setCurrentImageIndex(getNextRandomImage());
+        const newIndex = getNextRandomImage();
+        setCurrentImageIndex(newIndex);
+        setLastShownImage(allImages[newIndex]); // Track the last shown image
       }, 1000);
     } else if (activeProject) {
       // Project-specific cycling
@@ -86,7 +104,9 @@ export default function SaasShowcase() {
       }
       
       intervalRef.current = setInterval(() => {
-        setCurrentImageIndex(prev => (prev + 1) % activeProject.images.length);
+        const newIndex = (currentImageIndex + 1) % activeProject.images.length;
+        setCurrentImageIndex(newIndex);
+        setLastShownImage(activeProject.images[newIndex]); // Track the last shown image
       }, 1000);
     }
 
@@ -95,7 +115,7 @@ export default function SaasShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [activeProject, allImages.length]);
+  }, [activeProject, allImages.length, currentImageIndex]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
