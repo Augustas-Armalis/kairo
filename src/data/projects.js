@@ -78,13 +78,13 @@ export const projects = [
   },
   {
     id: 5,
-    name: "Strivo",
+    name: "Strivio",
     popupTextMobile: "Strivo.com",
     description: "Secure payment solutions for businesses",
-    logo: "/images/product-logos/strivo.png",
+    logo: "/images/product-logos/strivio.png",
     images: [
-      "/images/products/strivo/1.png",
-      "/images/products/strivo/2.png",
+      "/images/products/strivio/1.png",
+      "/images/products/strivio/2.png",
     ],
     stats: {
       users: "60K+",

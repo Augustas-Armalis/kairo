@@ -13,19 +13,9 @@ export default function SaasShowcase() {
   // Dynamically discover all images from products folders
   useEffect(() => {
     const discoverImages = () => {
-      const imagePaths = [
-        // Example folder
-        '/images/products/example/example1.png',
-        '/images/products/example/bigexample1.png',
-        // Try1 folder
-        '/images/products/try1/Rectangle 1000002352.png',
-        '/images/products/try1/Rectangle 1000002352-4.png',
-        // Try2 folder
-        '/images/products/try2/Rectangle 1000002352-1.png',
-        '/images/products/try2/Rectangle 1000002352-2.png',
-        '/images/products/try2/Rectangle 1000002352-3.png',
-      ];
-      setAllImages(imagePaths);
+      // Get all images from all project folders
+      const allProjectImages = projects.flatMap(project => project.images);
+      setAllImages(allProjectImages);
     };
     
     discoverImages();
