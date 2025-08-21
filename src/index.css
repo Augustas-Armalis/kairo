@@ -17,8 +17,10 @@
   
   body {
     font-family: 'Inter Variable', system-ui, sans-serif;
-    font-weight: 500; /* Medium weight */
-    letter-spacing: -0.03em; /* -3% letter spacing */
+    font-weight: 470;
+    letter-spacing: -0.03em;
+    background-color: #0C0C0D;
+    color: #FFFFFF;
   }
   
   * {
