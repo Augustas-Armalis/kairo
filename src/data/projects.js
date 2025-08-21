@@ -5,13 +5,10 @@ export const projects = [
     popupText: "Revolutionary SaaS platform for modern businesses",
     description: "Advanced business management solution",
     logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/example1.png",
+    thumbnail: "/images/products/example/bigexample1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png"
+      "/images/products/example/bigexample1.png",
     ],
     stats: {
       users: "50K+",
@@ -27,12 +24,11 @@ export const projects = [
     name: "Project Beta",
     popupText: "AI-powered analytics dashboard for enterprises",
     description: "Intelligent data insights platform",
-    logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/example1.png",
+    logo: "/images/products/try1/Rectangle 1000002352.png",
+    thumbnail: "/images/products/try1/Rectangle 1000002352.png",
     images: [
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png"
+      "/images/products/try1/Rectangle 1000002352.png",
+      "/images/products/try1/Rectangle 1000002352-4.png"
     ],
     stats: {
       users: "25K+",
@@ -48,11 +44,12 @@ export const projects = [
     name: "Project Gamma",
     popupText: "Cloud-based collaboration tool for remote teams",
     description: "Seamless team collaboration platform",
-    logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/example1.png",
+    logo: "/images/products/try2/Rectangle 1000002352-1.png",
+    thumbnail: "/images/products/try2/Rectangle 1000002352-1.png",
     images: [
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png"
+      "/images/products/try2/Rectangle 1000002352-1.png",
+      "/images/products/try2/Rectangle 1000002352-2.png",
+      "/images/products/try2/Rectangle 1000002352-3.png"
     ],
     stats: {
       users: "75K+",
@@ -69,12 +66,10 @@ export const projects = [
     popupText: "Advanced CRM solution for growing companies",
     description: "Customer relationship management platform",
     logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/example1.png",
+    thumbnail: "/images/products/example/bigexample1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png"
+      "/images/products/example/bigexample1.png",
     ],
     stats: {
       users: "40K+",
@@ -90,11 +85,11 @@ export const projects = [
     name: "Project Epsilon",
     popupText: "Innovative payment processing platform",
     description: "Secure payment solutions for businesses",
-    logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/example1.png",
+    logo: "/images/products/try1/Rectangle 1000002352-4.png",
+    thumbnail: "/images/products/try1/Rectangle 1000002352-4.png",
     images: [
-      "/images/products/example/example1.png",
-      "/images/products/example/example1.png"
+      "/images/products/try1/Rectangle 1000002352-4.png",
+      "/images/products/try1/Rectangle 1000002352.png"
     ],
     stats: {
       users: "60K+",

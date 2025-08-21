@@ -6,10 +6,30 @@ export default function SaasShowcase() {
   const [activeProject, setActiveProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [allImages, setAllImages] = useState([]);
+  const [usedImages, setUsedImages] = useState([]);
   const intervalRef = useRef(null);
   
-  // Get all images from all projects for random cycling
-  const allProjectImages = projects.flatMap(project => project.images);
+  // Dynamically discover all images from products folders
+  useEffect(() => {
+    const discoverImages = () => {
+      const imagePaths = [
+        // Example folder
+        '/images/products/example/example1.png',
+        '/images/products/example/bigexample1.png',
+        // Try1 folder
+        '/images/products/try1/Rectangle 1000002352.png',
+        '/images/products/try1/Rectangle 1000002352-4.png',
+        // Try2 folder
+        '/images/products/try2/Rectangle 1000002352-1.png',
+        '/images/products/try2/Rectangle 1000002352-2.png',
+        '/images/products/try2/Rectangle 1000002352-3.png',
+      ];
+      setAllImages(imagePaths);
+    };
+    
+    discoverImages();
+  }, []);
 
   // Check if mobile
   useEffect(() => {
@@ -23,14 +43,34 @@ export default function SaasShowcase() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Get next random image without repetition
+  const getNextRandomImage = () => {
+    if (allImages.length === 0) return 0;
+    
+    // If we've used all images, reset the used list
+    if (usedImages.length >= allImages.length) {
+      setUsedImages([]);
+    }
+    
+    // Find an image that hasn't been used recently
+    const availableImages = allImages.filter((_, index) => !usedImages.includes(index));
+    const randomIndex = Math.floor(Math.random() * availableImages.length);
+    const selectedImageIndex = allImages.indexOf(availableImages[randomIndex]);
+    
+    // Add to used images
+    setUsedImages(prev => [...prev, selectedImageIndex]);
+    
+    return selectedImageIndex;
+  };
+
   // Random image cycling when no project is active
   useEffect(() => {
-    if (!activeProject) {
+    if (!activeProject && allImages.length > 0) {
       // Global random cycling through all project images
       intervalRef.current = setInterval(() => {
-        setCurrentImageIndex(prev => (prev + 1) % allProjectImages.length);
+        setCurrentImageIndex(getNextRandomImage());
       }, 1000);
-    } else {
+    } else if (activeProject) {
       // Project-specific cycling
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -47,7 +87,7 @@ export default function SaasShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [activeProject, allProjectImages.length]);
+  }, [activeProject, allImages.length]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -111,7 +151,7 @@ export default function SaasShowcase() {
       return activeProject.images[currentImageIndex % activeProject.images.length];
     }
     // Show random global images
-    return allProjectImages[currentImageIndex];
+    return allImages[currentImageIndex] || allImages[0];
   };
 
   return (
@@ -139,7 +179,7 @@ export default function SaasShowcase() {
       <AnimatePresence>
         {activeProject && (
           <motion.div
-            className="absolute  -top-8 z-50 top-popup"
+            className="absolute left-1/2 transform -translate-x-1/2 -top-8 z-50 top-popup"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
@@ -151,7 +191,7 @@ export default function SaasShowcase() {
                   onClick={handleMobilePopupClick}
                   className="flex items-center gap-2 text-white text-sm"
                 >
-                  <span>{activeProject.name}</span>
+                  <span>{activeProject.popupText}</span>
                   <img 
                     src={activeProject.mobileIcon} 
                     alt="arrow" 
@@ -159,7 +199,7 @@ export default function SaasShowcase() {
                   />
                 </button>
               ) : (
-                <p className="text-white text-sm">{activeProject.name}</p>
+                <p className="text-white text-sm">{activeProject.popupText}</p>
               )}
             </div>
           </motion.div>
@@ -168,14 +208,11 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <motion.img
+        <img
           key={getCurrentImage()}
           src={getCurrentImage()}
           alt="Product Preview"
           className="w-full h-full object-cover rounded-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
         />
 
         {/* Stats Board - slides up from bottom when project is active */}
