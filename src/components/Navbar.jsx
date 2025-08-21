@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-center flex-col items-center w-full fixed top-6 max-[593px]:top-4 z-50 px-3" ref={navRef}>
-      <div className="flex w-full max-w-[569px] bg-bg/70 backdrop-blur-md justify-between h-[43px] z-50 items-center px-6 rounded-full max-[593px]:px-5">
+      <div className="flex w-full max-w-[569px] bg-bg/70 backdrop-blur-md justify-between h-[43px] z-50 items-center px-6 rounded-full max-[593px]:pl-5 max-[593px]:pr-[10px]">
       
         <a href="https://kairostudio.co" rel="noopener noreferrer">
           <img src="/svgs/biglogo.svg" alt="logo" className='w-auto h-[18px]'/>
@@ -59,7 +59,7 @@ const Navbar = () => {
         </div>
 
         {/* Burger Menu Button */}
-        <div className='w-[30px] h-[30px] hidden items-center justify-center max-[593px]:flex' onClick={toggleMenu}>
+        <div className='w-[42px] h-[42px] hidden items-center justify-center max-[593px]:flex' onClick={toggleMenu}>
           <div
             className="flex-col gap-2 w-fit cursor-pointer max-[593px]:flex hidden"
             

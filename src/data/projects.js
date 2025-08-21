@@ -2,15 +2,16 @@ export const projects = [
   {
     id: 1,
     name: "Project Alpha",
-    description: "Revolutionary SaaS platform for modern businesses",
+    popupText: "Revolutionary SaaS platform for modern businesses",
+    description: "Advanced business management solution",
     logo: "/images/products/example/example1.png",
     thumbnail: "/images/products/example/example1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example2.png",
-      "/images/products/example/example3.png",
-      "/images/products/example/example4.png",
-      "/images/products/example/example5.png"
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png"
     ],
     stats: {
       users: "50K+",
@@ -24,13 +25,14 @@ export const projects = [
   {
     id: 2,
     name: "Project Beta",
-    description: "AI-powered analytics dashboard for enterprises",
+    popupText: "AI-powered analytics dashboard for enterprises",
+    description: "Intelligent data insights platform",
     logo: "/images/products/example/example1.png",
     thumbnail: "/images/products/example/example1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example2.png",
-      "/images/products/example/example3.png"
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png"
     ],
     stats: {
       users: "25K+",
@@ -44,12 +46,13 @@ export const projects = [
   {
     id: 3,
     name: "Project Gamma",
-    description: "Cloud-based collaboration tool for remote teams",
+    popupText: "Cloud-based collaboration tool for remote teams",
+    description: "Seamless team collaboration platform",
     logo: "/images/products/example/example1.png",
     thumbnail: "/images/products/example/example1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example2.png"
+      "/images/products/example/example1.png"
     ],
     stats: {
       users: "75K+",
@@ -63,14 +66,15 @@ export const projects = [
   {
     id: 4,
     name: "Project Delta",
-    description: "Advanced CRM solution for growing companies",
+    popupText: "Advanced CRM solution for growing companies",
+    description: "Customer relationship management platform",
     logo: "/images/products/example/example1.png",
     thumbnail: "/images/products/example/example1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example2.png",
-      "/images/products/example/example3.png",
-      "/images/products/example/example4.png"
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png",
+      "/images/products/example/example1.png"
     ],
     stats: {
       users: "40K+",
@@ -84,12 +88,13 @@ export const projects = [
   {
     id: 5,
     name: "Project Epsilon",
-    description: "Innovative payment processing platform",
+    popupText: "Innovative payment processing platform",
+    description: "Secure payment solutions for businesses",
     logo: "/images/products/example/example1.png",
     thumbnail: "/images/products/example/example1.png",
     images: [
       "/images/products/example/example1.png",
-      "/images/products/example/example2.png"
+      "/images/products/example/example1.png"
     ],
     stats: {
       users: "60K+",
