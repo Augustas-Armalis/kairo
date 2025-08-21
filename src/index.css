@@ -22,6 +22,31 @@
     font-weight: inherit;
     letter-spacing: inherit;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #19191A; /* bg color */
+    border-radius: 9999px; /* fully rounded */
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1E1E1F; /* hover color */
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #19191A #0C0C0D; /* thumb track */
+  }
 }
 
 @layer utilities {
@@ -35,3 +60,49 @@
   .font-extrabold { font-weight: 800; }
   .font-black { font-weight: 900; }
 }
+
+
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: -0.02em;
+}
+
+/* Improve text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Group interactive elements */
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus states for better accessibility */
+a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+
+  /* Selection styles */
+  ::selection {
+    background-color: rgba(255, 255, 255, 0.125);
+  }
+
+
+  /* Media handling */
+  img,
+  video {
+    pointer-events: none;
+    user-select: none;
+  }

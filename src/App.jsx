@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import Ventures from './pages/Ventures'
 import Team from './pages/Team'
@@ -15,6 +16,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/acquire" element={<Acquire />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
