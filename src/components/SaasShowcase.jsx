@@ -199,7 +199,7 @@ export default function SaasShowcase() {
                   />
                 </button>
               ) : (
-                <p className="text-white text-sm">{activeProject.popupTextDesktop}</p>
+                <p className="text-white text-sm">{activeProject.name}</p>
               )}
             </div>
           </motion.div>
