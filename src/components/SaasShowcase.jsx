@@ -186,7 +186,7 @@ export default function SaasShowcase() {
     <div className="relative w-full flex flex-col items-center">
       {/* Project Logos Grid */}
       <div
-        className="bg-bg w-fit max-w-full flex gap-2 p-2 rounded-2xl pointer-events-auto grid-container"
+        className="bg-bg w-fit max-w-full grid auto-flow-col grid-cols-[repeat(auto-fit,52px)] gap-2 mt-24 p-2 rounded-2xl pointer-events-auto grid-container"
         onMouseLeave={handleProjectLeave}
       >
         {projects.map((project) => (
