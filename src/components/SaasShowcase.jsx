@@ -69,7 +69,7 @@ export default function SaasShowcase() {
       // Global random cycling through all project images
       intervalRef.current = setInterval(() => {
         setCurrentImageIndex(getNextRandomImage());
-      }, 1000);
+      }, 1500);
     } else if (activeProject) {
       // Project-specific cycling
       if (intervalRef.current) {
@@ -79,7 +79,7 @@ export default function SaasShowcase() {
       
       intervalRef.current = setInterval(() => {
         setCurrentImageIndex(prev => (prev + 1) % activeProject.images.length);
-      }, 1000);
+      }, 1500);
     }
 
     return () => {
@@ -208,7 +208,7 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           <motion.img
             key={getCurrentImage()}
             src={getCurrentImage()}
@@ -217,7 +217,7 @@ export default function SaasShowcase() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
           />
         </AnimatePresence>
 
