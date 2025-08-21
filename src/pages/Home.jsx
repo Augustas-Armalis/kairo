@@ -20,18 +20,16 @@ const Home = () => {
           <Link to="/acquire" className="flex items-center justify-center w-fit h-fit pb-[8px] pt-[10px] px-6 rounded-full transition-all duration-300 border border-hover hover:bg-hover bg-bg text-white group">
             <p className="text-lg leading-tight">Acquire</p>
           </Link>
+        </div>
 
 
-      
-          <div className="bg-bg w-full h-fit flex flex-row flex-wrap gap-2">
+        <div className="bg-bg w-full h-fit flex flex-row flex-wrap gap-2 mt-24">
+            <div>
+              <img src="/images/products/example1.png" alt="Product Logo" className="w-full h-full object-cover" />
+            </div>
 
 
           </div>
-
-
-
-
-        </div>
 
       </div>
 
