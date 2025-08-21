@@ -208,16 +208,24 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <AnimatePresence mode="wait">
+        {/* Base image that stays visible */}
+        <img
+          src={getCurrentImage()}
+          alt="Product Preview"
+          className="w-full h-full object-cover rounded-2xl"
+        />
+        
+        {/* Overlay image that fades in on top */}
+        <AnimatePresence>
           <motion.img
-            key={getCurrentImage()}
+            key={`overlay-${getCurrentImage()}`}
             src={getCurrentImage()}
-            alt="Product Preview"
+            alt="Product Preview Overlay"
             className="w-full h-full object-cover rounded-2xl absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           />
         </AnimatePresence>
         
