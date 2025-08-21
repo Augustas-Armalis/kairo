@@ -8,9 +8,6 @@ export default function SaasShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const [allImages, setAllImages] = useState([]);
   const [usedImages, setUsedImages] = useState([]);
-  const [currentImage, setCurrentImage] = useState('');
-  const [nextImage, setNextImage] = useState('');
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const intervalRef = useRef(null);
   
   // Dynamically discover all images from products folders
@@ -29,9 +26,6 @@ export default function SaasShowcase() {
         '/images/products/try2/Rectangle 1000002352-3.png',
       ];
       setAllImages(imagePaths);
-      if (imagePaths.length > 0) {
-        setCurrentImage(imagePaths[0]);
-      }
     };
     
     discoverImages();
@@ -74,15 +68,7 @@ export default function SaasShowcase() {
     if (!activeProject && allImages.length > 0) {
       // Global random cycling through all project images
       intervalRef.current = setInterval(() => {
-        const nextIndex = getNextRandomImage();
-        setNextImage(allImages[nextIndex]);
-        setIsTransitioning(true);
-        
-        setTimeout(() => {
-          setCurrentImageIndex(nextIndex);
-          setCurrentImage(allImages[nextIndex]);
-          setIsTransitioning(false);
-        }, 150);
+        setCurrentImageIndex(getNextRandomImage());
       }, 1500);
     } else if (activeProject) {
       // Project-specific cycling
@@ -92,15 +78,7 @@ export default function SaasShowcase() {
       }
       
       intervalRef.current = setInterval(() => {
-        const nextIndex = (currentImageIndex + 1) % activeProject.images.length;
-        setNextImage(activeProject.images[nextIndex]);
-        setIsTransitioning(true);
-        
-        setTimeout(() => {
-          setCurrentImageIndex(nextIndex);
-          setCurrentImage(activeProject.images[nextIndex]);
-          setIsTransitioning(false);
-        }, 150);
+        setCurrentImageIndex(prev => (prev + 1) % activeProject.images.length);
       }, 1500);
     }
 
@@ -109,7 +87,7 @@ export default function SaasShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [activeProject, allImages.length, currentImageIndex]);
+  }, [activeProject, allImages.length]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -230,28 +208,18 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        {/* Current Image */}
-        <motion.img
-          key={`current-${currentImage}`}
-          src={currentImage || getCurrentImage()}
-          alt="Product Preview"
-          className="w-full h-full object-cover rounded-2xl absolute inset-0"
-          animate={{ opacity: isTransitioning ? 0 : 1 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        />
-        
-        {/* Next Image (for crossfade) */}
-        {isTransitioning && nextImage && (
+        <AnimatePresence mode="crossfade">
           <motion.img
-            key={`next-${nextImage}`}
-            src={nextImage}
+            key={getCurrentImage()}
+            src={getCurrentImage()}
             alt="Product Preview"
             className="w-full h-full object-cover rounded-2xl absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
           />
-        )}
+        </AnimatePresence>
 
         {/* Stats Board - slides up from bottom when project is active */}
         <AnimatePresence>
