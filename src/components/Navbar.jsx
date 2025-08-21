@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="flex w-full max-w-[569px] bg-bg/70 backdrop-blur-md justify-between h-[43px] z-50 items-center px-6 rounded-full max-[593px]:px-5">
       
         <a href="https://kairostudio.co" target="_blank" rel="noopener noreferrer">
-          <img src="/svgs/logo.svg" alt="logo" className='w-auto h-[18px]'/>
+          <img src="/svgs/biglogo.svg" alt="logo" className='w-auto h-[18px]'/>
         </a>
 
         <div className='flex gap-6 text-alt text-[16px] text-center max-[593px]:hidden'>
@@ -59,20 +59,22 @@ const Navbar = () => {
         </div>
 
         {/* Burger Menu Button */}
-        <div 
-          className="flex-col gap-2 w-fit cursor-pointer max-[593px]:flex hidden"
-          onClick={toggleMenu}
-        >
-          <motion.div 
-            className="w-7 h-[2px] bg-white rounded-full"
-            animate={isOpen ? { rotate: 45, y: 5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
-            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-          />
-          <motion.div 
-            className="w-7 h-[2px] bg-white rounded-full"
-            animate={isOpen ? { rotate: -45, y: -5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
-            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-          />
+        <div className='w-[30px] h-[30px] hidden items-center justify-center max-[593px]:flex' onClick={toggleMenu}>
+          <div
+            className="flex-col gap-2 w-fit cursor-pointer max-[593px]:flex hidden"
+            
+          >
+            <motion.div
+              className="w-7 h-[2px] bg-white rounded-full"
+              animate={isOpen ? { rotate: 45, y: 5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
+              transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+            />
+            <motion.div
+              className="w-7 h-[2px] bg-white rounded-full"
+              animate={isOpen ? { rotate: -45, y: -5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
+              transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+            />
+          </div>
         </div>
 
       </div>
