@@ -261,7 +261,7 @@ export default function SaasShowcase() {
         <AnimatePresence>
           {activeProject && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-bg/70 backdrop-blur-md border-t border-hover py-[6px] px-4"
+              className="absolute bottom-0 left-0 right-0 bg-bg/70 backdrop-blur-md border-t border-hover/20 py-[6px] px-4"
               initial={{ y: 100 }}
               animate={{ y: 0 }}
               exit={{ y: 100 }}
