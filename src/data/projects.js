@@ -15,8 +15,7 @@ export const projects = [
       mrr: "$208K",
       valuation: "$25M"
     },
-    link: "https://example.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example.com"
   },
   {
     id: 2,
@@ -34,10 +33,8 @@ export const projects = [
       mrr: "$150K",
       valuation: "$18M"
     },
-    link: "https://example.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example.com"
   },
-
   {
     id: 3,
     name: "Luminor",
@@ -54,8 +51,7 @@ export const projects = [
       mrr: "$267K",
       valuation: "$32M"
     },
-    link: "https://example3.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example3.com"
   },
   {
     id: 4,
@@ -73,13 +69,12 @@ export const projects = [
       mrr: "$175K",
       valuation: "$21M"
     },
-    link: "https://example4.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example4.com"
   },
   {
     id: 5,
     name: "Strivio",
-    popupTextMobile: "Strivo.com",
+    popupTextMobile: "Strivio.com",
     description: "Secure payment solutions for businesses",
     logo: "/images/product-logos/strivio.png",
     images: [
@@ -92,8 +87,7 @@ export const projects = [
       mrr: "$233K",
       valuation: "$28M"
     },
-    link: "https://example5.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example5.com"
   },
   {
     id: 6,
@@ -111,7 +105,6 @@ export const projects = [
       mrr: "$233K",
       valuation: "$28M"
     },
-    link: "https://example6.com",
-    mobileIcon: "/svgs/arrow.svg"
+    link: "https://example6.com"
   }
 ];
