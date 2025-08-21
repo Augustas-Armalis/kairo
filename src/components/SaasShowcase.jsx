@@ -207,27 +207,27 @@ export default function SaasShowcase() {
       <AnimatePresence>
         {activeProject && (
           <motion.div
-            className="absolute -top-8 z-50 top-popup"
+            className="absolute -top-11 z-50 top-popup"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
           >
-            <div className="w-[200px] h-[24px] bg-red-500 rounded flex items-center justify-center">
+            <div className="w-fit h-fit px-4 pb-[6px] pt-[7px] bg-hover rounded-full flex items-center justify-center">
               {isMobile ? (
                 <button
                   onClick={handleMobilePopupClick}
-                  className="flex items-center gap-2 text-white text-sm"
+                  className="flex items-center gap-2 text-white text-base leading-tight"
                 >
                   <span>{activeProject.popupTextMobile}</span>
                   <img 
-                    src="/svgs/arrow.svg"
+                    src="/svgs/link.svg"
                     alt="arrow" 
-                    className="w-4 h-4" 
+                    className="w-[15px] h-[15px]" 
                   />
                 </button>
               ) : (
-                <p className="text-white text-sm">{activeProject.name}</p>
+                <p className="text-white text-base leading-tight">{activeProject.name}</p>
               )}
             </div>
           </motion.div>
@@ -261,13 +261,13 @@ export default function SaasShowcase() {
         <AnimatePresence>
           {activeProject && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-bg/90 backdrop-blur-md border-t border-hover p-4"
+              className="absolute bottom-0 left-0 right-0 bg-bg/70 backdrop-blur-md border-t border-hover py-[6px] px-4"
               initial={{ y: 100 }}
               animate={{ y: 0 }}
               exit={{ y: 100 }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
             >
-              <div className="flex flex-wrap gap-6 text-sm">
+              <div className="flex flex-wrap w-full items-center justify-center gap-6 max-[601px]:gap-3 text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-alt">Users:</span>
                   <span className="text-white font-medium">{activeProject.stats.users}</span>

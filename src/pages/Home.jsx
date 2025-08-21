@@ -3,7 +3,7 @@ import SaasShowcase from '../components/SaasShowcase.jsx'
 
 const Home = () => {
   return (
-    <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3">
+    <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
       <div className="flex flex-col items-center w-full max-w-[569px]">
     
         <h1 className="text-[52px] text-center leading-[120%] tracking-[-0.035em] font-[520] max-w-[500px] max-[593px]:text-4xl max-[593px]:max-w-[320px] capitalize">We build cool SaaS And make It work</h1>

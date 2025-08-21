@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="flex flex-col w-full h-fit items-center mt-[92px] px-3 mb-8 max-[456px]:mb-6">
+    <div className="flex flex-col w-full h-fit items-center mt-[92px] px-3 mb-8">
       <div className="flex flex-row flex-wrap gap-2 items-center justify-between w-full max-w-[569px] ">
         <p className="text-darkalt text-base">Kairo © 2025</p>
 
