@@ -37,20 +37,32 @@ export default function SaasShowcase() {
   const getNextRandomImage = () => {
     if (allImages.length === 0) return 0;
     
-    // If we've used all images, reset the used list
+    // If we've used all images, reset the used list to start fresh
     if (usedImages.length >= allImages.length) {
       setUsedImages([]);
     }
     
-    // Find an image that hasn't been used recently
-    const availableImages = allImages.filter((_, index) => !usedImages.includes(index));
-    const randomIndex = Math.floor(Math.random() * availableImages.length);
-    const selectedImageIndex = allImages.indexOf(availableImages[randomIndex]);
+    // Find images that haven't been used recently
+    let availableImages = allImages.filter((_, index) => !usedImages.includes(index));
     
-    // Add to used images
-    setUsedImages(prev => [...prev, selectedImageIndex]);
+    // Occasionally shuffle the available images for extra randomness
+    if (Math.random() < 0.3) { // 30% chance to shuffle
+      availableImages = [...availableImages].sort(() => Math.random() - 0.5);
+    }
     
-    return selectedImageIndex;
+    // If we have available images, pick one randomly
+    if (availableImages.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableImages.length);
+      const selectedImageIndex = allImages.indexOf(availableImages[randomIndex]);
+      
+      // Add to used images to track what we've shown
+      setUsedImages(prev => [...prev, selectedImageIndex]);
+      
+      return selectedImageIndex;
+    }
+    
+    // Fallback: if somehow no available images, pick any random one
+    return Math.floor(Math.random() * allImages.length);
   };
 
   // Random image cycling when no project is active
