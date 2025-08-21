@@ -1,14 +1,14 @@
 export const projects = [
   {
     id: 1,
-    name: "Project Alpha",
+    name: "Inkflow",
     popupText: "Revolutionary SaaS platform for modern businesses",
     description: "Advanced business management solution",
-    logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/bigexample1.png",
+    logo: "/images/products/product logos/inkflow.png",
+    thumbnail: "/images/products/inkflow/1.png",
     images: [
-      "/images/products/example/example1.png",
-      "/images/products/example/bigexample1.png",
+      "/images/products/inkflow/1.png",
+      "/images/products/inkflow/2.png",
     ],
     stats: {
       users: "50K+",
