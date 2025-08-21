@@ -9,6 +9,17 @@ export default {
       fontFamily: {
         sans: ['Inter Variable', 'system-ui', 'sans-serif'],
       },
+      fontWeight: {
+        'thin': '100',
+        'extralight': '200',
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
+        'black': '900',
+      },
       colors: {
         black: '#0C0C0D',
         bg: '#19191A',
@@ -20,4 +31,10 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /^font-\[(\d+)\]$/,
+      variants: ['hover', 'focus', 'active'],
+    }
+  ],
 }

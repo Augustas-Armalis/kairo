@@ -11,6 +11,7 @@
     "deploy": "vite build && git add . && (git diff --cached --quiet || git commit -m 'deploy') && git push"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.2.6",
     "framer-motion": "^12.23.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
