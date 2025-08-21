@@ -2,8 +2,8 @@ export const projects = [
   {
     id: 1,
     name: "Inkflow",
-    popupText: "Revolutionary SaaS platform for modern businesses",
-    description: "Advanced business management solution",
+    popupText: "Inkflow.com",
+    description: "Social Media Analytics Tool",
     logo: "/images/product-logos/inkflow.png",
     images: [
       "/images/products/inkflow/1.png",
