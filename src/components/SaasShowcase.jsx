@@ -8,6 +8,9 @@ export default function SaasShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const [allImages, setAllImages] = useState([]);
   const [usedImages, setUsedImages] = useState([]);
+  const [baseImage, setBaseImage] = useState('');
+  const [overlayImage, setOverlayImage] = useState('');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const intervalRef = useRef(null);
   
   // Dynamically discover all images from products folders
@@ -26,10 +29,15 @@ export default function SaasShowcase() {
         '/images/products/try2/Rectangle 1000002352-3.png',
       ];
       setAllImages(imagePaths);
+      
+      // Initialize base image
+      if (imagePaths.length > 0 && !baseImage) {
+        setBaseImage(imagePaths[0]);
+      }
     };
     
     discoverImages();
-  }, []);
+  }, [baseImage]);
 
   // Check if mobile
   useEffect(() => {
@@ -63,12 +71,30 @@ export default function SaasShowcase() {
     return selectedImageIndex;
   };
 
+  // Handle image transitions with layering
+  const transitionToNewImage = (newImageSrc) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setOverlayImage(newImageSrc);
+    
+    // After overlay fades in, update base image
+    setTimeout(() => {
+      setBaseImage(newImageSrc);
+      setOverlayImage('');
+      setIsTransitioning(false);
+    }, 300); // Match the fade duration
+  };
+
   // Random image cycling when no project is active
   useEffect(() => {
     if (!activeProject && allImages.length > 0) {
       // Global random cycling through all project images
       intervalRef.current = setInterval(() => {
-        setCurrentImageIndex(getNextRandomImage());
+        const newIndex = getNextRandomImage();
+        const newImageSrc = allImages[newIndex];
+        setCurrentImageIndex(newIndex);
+        transitionToNewImage(newImageSrc);
       }, 1500);
     } else if (activeProject) {
       // Project-specific cycling
@@ -78,7 +104,10 @@ export default function SaasShowcase() {
       }
       
       intervalRef.current = setInterval(() => {
-        setCurrentImageIndex(prev => (prev + 1) % activeProject.images.length);
+        const newIndex = (currentImageIndex + 1) % activeProject.images.length;
+        const newImageSrc = activeProject.images[newIndex];
+        setCurrentImageIndex(newIndex);
+        transitionToNewImage(newImageSrc);
       }, 1500);
     }
 
@@ -87,7 +116,7 @@ export default function SaasShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [activeProject, allImages.length]);
+  }, [activeProject, allImages.length, currentImageIndex]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -208,17 +237,29 @@ export default function SaasShowcase() {
 
       {/* Main Image Container */}
       <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
-        <AnimatePresence mode="crossfade">
-          <motion.img
-            key={getCurrentImage()}
-            src={getCurrentImage()}
+        {/* Base image that stays until new one is ready */}
+        {baseImage && (
+          <img
+            src={baseImage}
             alt="Product Preview"
-            className="w-full h-full object-cover rounded-2xl absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full h-full object-cover rounded-2xl"
           />
+        )}
+        
+        {/* Overlay image that fades in */}
+        <AnimatePresence>
+          {overlayImage && (
+            <motion.img
+              key={`overlay-${overlayImage}`}
+              src={overlayImage}
+              alt="Product Preview Overlay"
+              className="w-full h-full object-cover rounded-2xl absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+          )}
         </AnimatePresence>
 
         {/* Stats Board - slides up from bottom when project is active */}
