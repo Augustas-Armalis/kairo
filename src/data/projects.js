@@ -4,8 +4,7 @@ export const projects = [
     name: "Inkflow",
     popupText: "Revolutionary SaaS platform for modern businesses",
     description: "Advanced business management solution",
-    logo: "/images/products/product logos/inkflow.png",
-    thumbnail: "/images/products/inkflow/1.png",
+    logo: "/images/product-logos/inkflow.png",
     images: [
       "/images/products/inkflow/1.png",
       "/images/products/inkflow/2.png",
@@ -25,7 +24,6 @@ export const projects = [
     popupText: "AI-powered analytics dashboard for enterprises",
     description: "Intelligent data insights platform",
     logo: "/images/products/try1/Rectangle 1000002352.png",
-    thumbnail: "/images/products/try1/Rectangle 1000002352.png",
     images: [
       "/images/products/try1/Rectangle 1000002352.png",
       "/images/products/try1/Rectangle 1000002352-4.png"
@@ -45,7 +43,6 @@ export const projects = [
     popupText: "Cloud-based collaboration tool for remote teams",
     description: "Seamless team collaboration platform",
     logo: "/images/products/try2/Rectangle 1000002352-1.png",
-    thumbnail: "/images/products/try2/Rectangle 1000002352-1.png",
     images: [
       "/images/products/try2/Rectangle 1000002352-1.png",
       "/images/products/try2/Rectangle 1000002352-2.png",
@@ -66,7 +63,6 @@ export const projects = [
     popupText: "Advanced CRM solution for growing companies",
     description: "Customer relationship management platform",
     logo: "/images/products/example/example1.png",
-    thumbnail: "/images/products/example/bigexample1.png",
     images: [
       "/images/products/example/example1.png",
       "/images/products/example/bigexample1.png",
@@ -86,7 +82,6 @@ export const projects = [
     popupText: "Innovative payment processing platform",
     description: "Secure payment solutions for businesses",
     logo: "/images/products/try1/Rectangle 1000002352-4.png",
-    thumbnail: "/images/products/try1/Rectangle 1000002352-4.png",
     images: [
       "/images/products/try1/Rectangle 1000002352-4.png",
       "/images/products/try1/Rectangle 1000002352.png"

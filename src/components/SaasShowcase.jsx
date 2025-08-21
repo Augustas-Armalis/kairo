@@ -110,7 +110,7 @@ export default function SaasShowcase() {
     if (!isMobile) {
       console.log('Hovering over:', project.name);
       setActiveProject(project);
-      setCurrentImageIndex(0); // Start from first image of this project
+      setCurrentImageIndex(0); // Start from first image (which is now the thumbnail)
     }
   };
 
@@ -131,7 +131,7 @@ export default function SaasShowcase() {
         setCurrentImageIndex(0);
       } else {
         setActiveProject(project);
-        setCurrentImageIndex(0);
+        setCurrentImageIndex(0); // Start from first image
       }
     } else {
       // Desktop: redirect to project link
