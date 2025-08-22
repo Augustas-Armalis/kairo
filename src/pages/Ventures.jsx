@@ -8,6 +8,32 @@ const Ventures = () => {
   const [isMobile, setIsMobile] = useState(false);
   const cardRefs = useRef({});
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      transform: "translateY(32px)"
+    },
+    visible: { 
+      opacity: 1, 
+      transform: "translateY(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 601);
@@ -69,7 +95,12 @@ const Ventures = () => {
 
   return (
     <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
-      <div className="flex flex-row flex-wrap gap-[10px] items-center justify-center w-full max-w-[569px]">
+      <motion.div 
+        className="flex flex-row flex-wrap gap-[10px] items-center justify-center w-full max-w-[569px]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
 
         {projects.map((project) => {
           const isHovered = hoveredProject === project.id;
@@ -87,6 +118,7 @@ const Ventures = () => {
               className={`flex flex-col gap-[6px] max-w-[279.5px] w-full h-[256px] rounded-[16px] p-[10px] transition-all duration-300 ease-out cursor-pointer relative overflow-hidden ${
                 isActive ? 'bg-hover' : 'bg-bg hover:bg-hover'
               }`}
+              variants={cardVariants}
               onMouseEnter={() => handleCardHover(project.id)}
               onMouseLeave={handleCardLeave}
               onClick={() => handleCardClick(project.link)}
@@ -145,7 +177,7 @@ const Ventures = () => {
 
       
       
-      </div>
+      </motion.div>
     </div>
   )
 }

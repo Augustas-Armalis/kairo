@@ -41,7 +41,7 @@ const EmailCopyButton = ({ email }) => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             Copied!
           </motion.div>
@@ -52,14 +52,46 @@ const EmailCopyButton = ({ email }) => {
 };
 
 const Team = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      transform: "translateY(32px)"
+    },
+    visible: { 
+      opacity: 1, 
+      transform: "translateY(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
-    <div className="flex flex-col w-full h-full min-h-screen px-3  items-center justify-center">
-      <div className="flex flex-col items-center w-full max-w-[569px] gap-[10px] ">
+    <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center max-[601px]:pt-[150px]">
+      <motion.div 
+        className="flex flex-col items-center w-full max-w-[569px] gap-[10px]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
 
-
-
-
-        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+        {/* Augustas */}
+        <motion.div 
+          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
+          variants={cardVariants}
+        >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/augustas.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -67,7 +99,7 @@ const Team = () => {
 
             <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
               <p className="text-white text-[20px] font-medium leading-tight">Augustas</p>
-              <p className="text-alt text-sm max-w-[285px] leading-[140%] h-full">CEO, Founder. Senior designer and developer. Web design agency owner</p>
+              <p className="text-alt text-sm max-w-[240px] max-[601px]:max-w-full leading-[140%] h-full">CEO, Founder. Senior designer & dev. Web design agency owner</p>
             </div>
 
             <div className="flex flex-row gap-[8px] w-fit">
@@ -88,14 +120,13 @@ const Team = () => {
 
           </div>
 
-        </div>
+        </motion.div>
 
-
-
-
-
-
-        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+        {/* Matthew */}
+        <motion.div 
+          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
+          variants={cardVariants}
+        >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/matthew.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -103,7 +134,7 @@ const Team = () => {
 
             <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
               <p className="text-white text-[20px] font-medium leading-tight">Matthew</p>
-              <p className="text-alt text-sm max-w-[230px] leading-[140%] h-full">CMO, co-founder. Brand growth and sales funnels specialist</p>
+              <p className="text-alt text-sm max-w-[230px] leading-[140%] h-full max-[601px]:max-w-full">CMO, co-founder. Brand growth and sales funnels specialist</p>
             </div>
 
             <div className="flex flex-row gap-[8px] w-fit">
@@ -121,15 +152,13 @@ const Team = () => {
 
           </div>
 
-        </div>
+        </motion.div>
 
-
-
-
-
-
-
-        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+        {/* Daniel */}
+        <motion.div 
+          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
+          variants={cardVariants}
+        >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/daniel.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -137,7 +166,7 @@ const Team = () => {
 
             <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
               <p className="text-white text-[20px] font-medium leading-tight">Daniel</p>
-              <p className="text-alt text-sm max-w-[210px] leading-[140%] h-full">Junior designer, co-founder. Web design agency owner</p>
+              <p className="text-alt text-sm max-w-[210px] leading-[140%] h-full max-[601px]:max-w-full">Junior designer, co-founder. Web design agency owner</p>
             </div>
 
             <div className="flex flex-row gap-[8px] w-fit">
@@ -155,16 +184,11 @@ const Team = () => {
 
           </div>
 
-        </div>
+        </motion.div>
 
-
-
-
-
-       
-      </div>
+      </motion.div>
     </div>
-    )
-  }
-  export default Team
+  )
+}
+export default Team
 

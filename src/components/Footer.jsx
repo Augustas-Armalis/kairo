@@ -1,6 +1,31 @@
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
+  const footerVariants = {
+    hidden: { 
+      opacity: 0 
+    },
+    visible: { 
+      opacity: 1,
+      transition: {
+        duration: 1.0,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
-    <div className="flex flex-col w-full h-fit items-center mt-[92px] px-3 mb-8">
+    <motion.div 
+      ref={ref}
+      className="flex flex-col w-full h-fit items-center mt-[92px] px-3 mb-8"
+      variants={footerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
       <div className="flex flex-row flex-wrap gap-2 items-center justify-between w-full max-w-[569px] ">
         <p className="text-darkalt text-base">Kairo © 2025</p>
 
@@ -20,7 +45,7 @@ const Footer = () => {
         
         <p className="text-darkalt text-base">hello@kairostudio.co</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

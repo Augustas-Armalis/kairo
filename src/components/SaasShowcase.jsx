@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects } from '../data/projects.js';
+import { projects } from '../data/projects';
 
 export default function SaasShowcase() {
   const [activeProject, setActiveProject] = useState(null);
@@ -8,9 +8,60 @@ export default function SaasShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const [allImages, setAllImages] = useState([]);
   const [usedImages, setUsedImages] = useState([]);
-  const [lastShownImage, setLastShownImage] = useState('');
+  const [lastShownImage, setLastShownImage] = useState(null);
   const intervalRef = useRef(null);
-  
+
+  const containerVariants = {
+    hidden: { 
+      opacity: 0,
+      backgroundColor: "rgba(25, 25, 26, 0)" // transparent bg
+    },
+    visible: {
+      opacity: 1,
+      backgroundColor: "rgba(25, 25, 26, 1)", // solid bg
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: 0.23,
+        delay: 0.23,
+        backgroundColor: {
+          duration: 0.6,
+          ease: [0.16, 1, 0.3, 1]
+        }
+      }
+    }
+  };
+
+  const logoVariants = {
+    hidden: { 
+      opacity: 0, 
+      transform: "translateY(30px)"
+    },
+    visible: { 
+      opacity: 1, 
+      transform: "translateY(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  const imageContainerVariants = {
+    hidden: { 
+      opacity: 0, 
+      transform: "translateY(40px)"
+    },
+    visible: { 
+      opacity: 1, 
+      transform: "translateY(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.16, 1, 0.3, 1],
+        delay: 0.3
+      }
+    }
+  };
+
   // Dynamically discover all images from products folders
   useEffect(() => {
     const discoverImages = () => {
@@ -185,9 +236,12 @@ export default function SaasShowcase() {
   return (
     <div className="relative w-full flex flex-col items-center">
       {/* Project Logos Grid */}
-      <div
+      <motion.div
         className="bg-bg w-fit max-w-full grid auto-flow-col grid-cols-[repeat(auto-fit,52px)] gap-2  p-2 rounded-2xl pointer-events-auto grid-container"
         onMouseLeave={handleProjectLeave}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
         {projects.map((project) => (
           <motion.img
@@ -196,12 +250,13 @@ export default function SaasShowcase() {
             className={`w-[52px] h-[52px] object-cover rounded-[10px] cursor-pointer transition-all duration-300 ${
               activeProject?.id === project.id ? 'opacity-70' : 'opacity-100'
             } pointer-events-auto project-logo`}
+            variants={logoVariants}
             onMouseEnter={() => handleProjectHover(project)}
             onClick={() => handleProjectClick(project)}
             whileTap={{ scale: 0.95 }}
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* Top Popup - positioned above the logos */}
       <AnimatePresence>
@@ -235,7 +290,10 @@ export default function SaasShowcase() {
       </AnimatePresence>
 
       {/* Main Image Container */}
-      <div className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden">
+      <motion.div 
+        className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden"
+        variants={imageContainerVariants}
+      >
         {/* Base image that stays visible */}
         <img
           src={getCurrentImage()}
@@ -284,7 +342,7 @@ export default function SaasShowcase() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 }
