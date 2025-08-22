@@ -1,12 +1,170 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const EmailCopyButton = ({ email }) => {
+  const [copied, setCopied] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setShowPopup(true);
+      
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setCopied(false);
+        setShowPopup(false);
+      }, 3000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
+
+  return (
+    <div className="relative">
+      <div 
+        className="bg-hover cursor-pointer w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out"
+        onClick={handleCopyEmail}
+      >
+        <img 
+          src={copied ? "/svgs/check.svg" : "/svgs/email.svg"} 
+          alt={copied ? "Copied" : "Email"} 
+          className="w-auto h-[16px] transition-all duration-300" 
+        />
+      </div>
+      
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            className="absolute left-[-24px] right-0 mx-auto w-fit -top-8 z-50 bg-[#0E2F23] border border-[#1E5B45] text-[#D4E1DC] px-3 pt-[4px] pb-[3px] leading-tight rounded-full text-sm font-medium whitespace-nowrap"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+          >
+            Copied!
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const Team = () => {
   return (
-    <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
-    <div className="flex flex-col items-center w-full max-w-[569px]">
+    <div className="flex flex-col w-full h-full min-h-screen px-3  items-center justify-center">
+      <div className="flex flex-col items-center w-full max-w-[569px] gap-[10px] ">
 
-      
+
+
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+          
+          <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/augustas.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
+
+          <div className="flex flex-row w-full flex-wrap h-fill items-end justify-between max-[601px]:h-fit max-[601px]:gap-4">
+
+            <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
+              <p className="text-white text-[20px] font-medium leading-tight">Augustas</p>
+              <p className="text-alt text-sm max-w-[285px] leading-[140%] h-full">CEO, Founder. Senior designer and developer. Web design agency owner</p>
+            </div>
+
+            <div className="flex flex-row gap-[8px] w-fit">
+              <a href="https://x.com/AugustasDesign" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/twitter.svg" alt="Linkedin" className="w-auto h-[16px]" />
+              </a>
+              <a href="https://www.linkedin.com/in/augustas-web/" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/linkedin.svg" alt="Linkedin" className="w-auto h-[16px]" />
+              </a>
+  
+              <EmailCopyButton email="augustas@kairostudio.co" />
+  
+              <a href="https://www.augustas.co" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/aweb.svg" alt="Linkedin" className="w-auto h-[12px]" />
+              </a>
+               
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+          
+          <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/matthew.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
+
+          <div className="flex flex-row w-full flex-wrap h-fill items-end justify-between max-[601px]:h-fit max-[601px]:gap-4">
+
+            <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
+              <p className="text-white text-[20px] font-medium leading-tight">Matthew</p>
+              <p className="text-alt text-sm max-w-[230px] leading-[140%] h-full">CMO, co-founder. Brand growth and sales funnels specialist</p>
+            </div>
+
+            <div className="flex flex-row gap-[8px] w-fit">
+              <a href="https://x.com/motiejusvar" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/twitter.svg" alt="Twitter" className="w-auto h-[16px]" />
+              </a>
+  
+              <EmailCopyButton email="matthew@kairostudio.co" />
+  
+              <a href="https://www.example.com" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/stairso.svg" alt="Stairso" className="w-auto h-[14px]" />
+              </a>
+               
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
+          
+          <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/daniel.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
+
+          <div className="flex flex-row w-full flex-wrap h-fill items-end justify-between max-[601px]:h-fit max-[601px]:gap-4">
+
+            <div className="flex flex-col gap-[8px] pt-[2px] w-fit h-full">
+              <p className="text-white text-[20px] font-medium leading-tight">Daniel</p>
+              <p className="text-alt text-sm max-w-[210px] leading-[140%] h-full">Junior designer, co-founder. Web design agency owner</p>
+            </div>
+
+            <div className="flex flex-row gap-[8px] w-fit">
+              <a href="https://x.com/DanieliusWeb" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/twitter.svg" alt="Twitter" className="w-auto h-[16px]" />
+              </a>
+  
+              <EmailCopyButton email="daniel@kairostudio.co" />
+  
+              <a href="https://www.example.com" target="_blank" rel="noopener noreferrer" className="bg-hover w-[32px] h-[32px] rounded-full flex items-center justify-center hover:brightness-150 transition-all duration-300 ease-out">
+                <img src="/svgs/vividly.svg" alt="Linkedin" className="w-auto h-[19px]" />
+              </a>
+               
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+       
+      </div>
     </div>
-  </div>
-  )
-}
+    )
+  }
+  export default Team
 
-export default Team

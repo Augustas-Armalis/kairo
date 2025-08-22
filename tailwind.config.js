@@ -21,9 +21,12 @@ export default {
         black: '900',
       },
       colors: {
-        'bg': '#0C0C0D',
+        'black': '#0C0C0D',
+        'bg': '#151516',
         'hover': '#1E1E1F',
-        'alt': '#71717A',
+        'darkalt': '#4B4B4E',
+        'alt': '#A2A2A6',
+        'white': '#FFFFFF',
       }
     },
   },
