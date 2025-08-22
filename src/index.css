@@ -1,4 +1,4 @@
-@import '@fontsource-variable/inter/index.css';
+@import '@fontsource/inter/index.css';
 
 @tailwind base;
 @tailwind components;
@@ -6,11 +6,11 @@
 
 @layer base {
   html {
-    font-family: 'Inter Variable', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
   
   body {
-    font-family: 'Inter Variable', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-weight: 460;
     letter-spacing: -0.03em;
     background-color: #0C0C0D;
@@ -106,3 +106,9 @@ a:focus-visible {
     pointer-events: none;
     user-select: none;
   }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
