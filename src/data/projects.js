@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     name: "Inkflow",
     popupTextMobile: "Inkflow.com",
-    description: "Advanced business management solution",
+    description: "Advanced business management",
     logo: "/images/product-logos/inkflow.png",
     images: [
       "/images/products/inkflow/1.png",
@@ -21,7 +21,7 @@ export const projects = [
     id: 2,
     name: "Orren",
     popupTextMobile: "Orren.com",
-    description: "Intelligent data insights platform",
+    description: "Intelligent data insights",
     logo: "/images/product-logos/orren.png",
     images: [
       "/images/products/orren/1.png",
@@ -39,7 +39,7 @@ export const projects = [
     id: 3,
     name: "Luminor",
     popupTextMobile: "Luminor.com",
-    description: "Seamless team collaboration platform",
+    description: "Seamless team collaboration",
     logo: "/images/product-logos/luminor.png",
     images: [
       "/images/products/luminor/1.png",
@@ -57,7 +57,7 @@ export const projects = [
     id: 4,
     name: "Flowzy",
     popupTextMobile: "Flowzy.com",
-    description: "Customer relationship management platform",
+    description: "Customer relationship",
     logo: "/images/product-logos/flowzy.png",
     images: [
       "/images/products/flowzy/1.png",
@@ -75,7 +75,7 @@ export const projects = [
     id: 5,
     name: "Strivio",
     popupTextMobile: "Strivio.com",
-    description: "Secure payment solutions for businesses",
+    description: "Secure payment solutions",
     logo: "/images/product-logos/strivio.png",
     images: [
       "/images/products/strivio/1.png",
@@ -93,7 +93,7 @@ export const projects = [
     id: 6,
     name: "Astrel",
     popupTextMobile: "Astrel.com",
-    description: "Secure payment solutions for businesses",
+    description: "Secure payment solutions",
     logo: "/images/product-logos/astrel.png",
     images: [
       "/images/products/astrel/1.png",
