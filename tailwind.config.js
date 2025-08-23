@@ -22,7 +22,7 @@ export default {
       },
       colors: {
         'black': '#0C0C0D',
-        'bg': '#151516',
+        'bg': '#19191A',
         'hover': '#1E1E1F',
         'darkalt': '#4B4B4E',
         'alt': '#A2A2A6',
@@ -31,4 +31,10 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /^font-\[(\d+)\]$/,
+      variants: ['hover', 'focus', 'active'],
+    }
+  ],
 }
