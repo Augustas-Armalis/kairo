@@ -21,9 +21,9 @@ export default function SaasShowcase() {
       opacity: 1,
       backgroundColor: "rgba(25, 25, 26, 1)", // solid bg
       transition: {
-        staggerChildren: 0.03,
-        delayChildren: 0.23,
-        delay: 0.23,
+        staggerChildren: isMobile ? 0 : 0.03,
+        delayChildren: isMobile ? 0 : 0.23,
+        delay: isMobile ? 0 : 0.23,
         backgroundColor: {
           duration: 0.6,
           ease: [0.16, 1, 0.3, 1]
@@ -35,13 +35,13 @@ export default function SaasShowcase() {
   const logoVariants = {
     hidden: { 
       opacity: 0, 
-      transform: "translateY(30px)"
+      transform: isMobile ? "translateY(0px)" : "translateY(30px)"
     },
     visible: { 
       opacity: 1, 
       transform: "translateY(0px)",
       transition: {
-        duration: 0.9,
+        duration: isMobile ? 0.4 : 0.9,
         ease: [0.16, 1, 0.3, 1]
       }
     }
