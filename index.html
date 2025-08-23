@@ -87,21 +87,6 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; connect-src 'self' https:;">
   </head>
   <body>
-    <!-- Handle redirects from 404.html -->
-    <script>
-      // Check if there's a redirect parameter
-      var urlParams = new URLSearchParams(window.location.search);
-      var redirect = urlParams.get('redirect');
-      
-      if (redirect) {
-        // Remove the redirect parameter from the URL
-        urlParams.delete('redirect');
-        var newUrl = redirect + (urlParams.toString() ? '?' + urlParams.toString() : '');
-        
-        // Update the URL without reloading the page
-        window.history.replaceState(null, null, newUrl);
-      }
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
