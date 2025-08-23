@@ -99,7 +99,8 @@ const Ventures = () => {
         className="flex flex-row flex-wrap gap-[10px] items-center justify-center w-full max-w-[569px]"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
       >
 
         {projects.map((project) => {
@@ -122,6 +123,7 @@ const Ventures = () => {
               onMouseEnter={() => handleCardHover(project.id)}
               onMouseLeave={handleCardLeave}
               onClick={() => handleCardClick(project.link)}
+              willChange="transform, opacity"
             >
               <div className="flex flex-row gap-[10px] items-center w-full h-fit">
                 <img src={project.logo} alt="Logo" className="w-[36px] h-[36px] object-cover rounded-[8px]"/>
@@ -138,7 +140,11 @@ const Ventures = () => {
                 animate={{
                   bottom: isActive ? -8 : -16
                 }}
-                transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                transition={{ 
+                  duration: isMobile ? 0.8 : 0.5, 
+                  ease: [0.25, 1, 0.5, 1] 
+                }}
+                willChange="transform"
               />
 
               <AnimatePresence>
@@ -148,7 +154,11 @@ const Ventures = () => {
                     initial={{ y: 12, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 12, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                    transition={{ 
+                      duration: isMobile ? 0.8 : 0.5, 
+                      ease: [0.25, 1, 0.5, 1] 
+                    }}
+                    willChange="transform, opacity"
                   >
                     <div className="flex flex-wrap w-full items-center justify-center gap-2 text-sm">
                       <div className="flex items-center gap-2 mr-1">

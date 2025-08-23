@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const EmailCopyButton = ({ email }) => {
@@ -42,6 +42,7 @@ const EmailCopyButton = ({ email }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            style={{ willChange: "transform, opacity" }}
           >
             Copied!
           </motion.div>
@@ -84,13 +85,16 @@ const Team = () => {
         className="flex flex-col items-center w-full max-w-[569px] gap-[10px]"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
+        style={{ willChange: "opacity" }}
       >
 
         {/* Augustas */}
         <motion.div 
           className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
           variants={cardVariants}
+          style={{ willChange: "transform, opacity" }}
         >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/augustas.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
@@ -126,6 +130,7 @@ const Team = () => {
         <motion.div 
           className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
           variants={cardVariants}
+          style={{ willChange: "transform, opacity" }}
         >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/matthew.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
@@ -158,6 +163,7 @@ const Team = () => {
         <motion.div 
           className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
           variants={cardVariants}
+          style={{ willChange: "transform, opacity" }}
         >
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/daniel.webp" alt="Pfp" className="w-full h-full object-cover" /></div>

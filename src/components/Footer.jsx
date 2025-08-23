@@ -3,7 +3,11 @@ import { useRef } from 'react';
 
 const Footer = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { 
+    once: false, 
+    margin: "0px 0px 0px 0px",
+    amount: 0.5
+  });
 
   const footerVariants = {
     hidden: { 
@@ -25,6 +29,7 @@ const Footer = () => {
       variants={footerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
+      style={{ willChange: "opacity" }}
     >
       <div className="flex flex-row flex-wrap gap-2 items-center justify-between w-full max-w-[569px] ">
         <p className="text-darkalt text-base">Kairo © 2025</p>

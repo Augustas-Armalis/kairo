@@ -50,6 +50,7 @@ function App() {
           exit="out"
           variants={pageVariants}
           transition={pageTransition}
+          style={{ willChange: "transform, opacity" }}
         >
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />

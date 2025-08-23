@@ -68,11 +68,13 @@ const Navbar = () => {
               className="w-7 h-[2px] bg-white rounded-full"
               animate={isOpen ? { rotate: 45, y: 5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+              style={{ willChange: "transform" }}
             />
             <motion.div
               className="w-7 h-[2px] bg-white rounded-full"
               animate={isOpen ? { rotate: -45, y: -5, width: '26px' } : { rotate: 0, y: 0, width: '28px' }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+              style={{ willChange: "transform" }}
             />
           </div>
         </div>
@@ -88,6 +90,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30, duration: 0.3 }}
             transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+            style={{ willChange: "transform, opacity" }}
           >
             <Link to="/" className={`group flex items-center justify-center w-full h-[40px] rounded-full transition-all duration-300 ${
               currentPath === '/' ? 'bg-hover' : 'bg-transparent hover:bg-hover'

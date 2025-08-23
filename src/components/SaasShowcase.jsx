@@ -9,6 +9,7 @@ export default function SaasShowcase() {
   const [allImages, setAllImages] = useState([]);
   const [usedImages, setUsedImages] = useState([]);
   const [lastShownImage, setLastShownImage] = useState(null);
+  const [imageContainerVisible, setImageContainerVisible] = useState(false);
   const intervalRef = useRef(null);
 
   const containerVariants = {
@@ -56,8 +57,7 @@ export default function SaasShowcase() {
       transform: "translateY(0px)",
       transition: {
         duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
-        delay: 0.3
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
@@ -89,6 +89,15 @@ export default function SaasShowcase() {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Trigger image container animation with delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setImageContainerVisible(true);
+    }, 350); // 300ms delay
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Get next random image without repetition
@@ -174,7 +183,9 @@ export default function SaasShowcase() {
       const topPopup = document.querySelector('.top-popup');
       if (activeProject && gridContainer && topPopup && !gridContainer.contains(event.target) && !topPopup.contains(event.target)) {
         setActiveProject(null);
-        setCurrentImageIndex(0);
+        // Pick a random starting point for global cycling
+        const randomStartIndex = Math.floor(Math.random() * allImages.length);
+        setCurrentImageIndex(randomStartIndex);
       }
     };
 
@@ -197,7 +208,9 @@ export default function SaasShowcase() {
     if (!isMobile) {
       console.log('Hover ended');
       setActiveProject(null);
-      setCurrentImageIndex(0); // Reset to start of global cycle
+      // Pick a random starting point for global cycling
+      const randomStartIndex = Math.floor(Math.random() * allImages.length);
+      setCurrentImageIndex(randomStartIndex);
     }
   };
 
@@ -207,7 +220,9 @@ export default function SaasShowcase() {
       // Mobile: toggle project active state
       if (activeProject?.id === project.id) {
         setActiveProject(null);
-        setCurrentImageIndex(0);
+        // Pick a random starting point for global cycling
+        const randomStartIndex = Math.floor(Math.random() * allImages.length);
+        setCurrentImageIndex(randomStartIndex);
       } else {
         setActiveProject(project);
         setCurrentImageIndex(0); // Start from first image
@@ -241,7 +256,9 @@ export default function SaasShowcase() {
         onMouseLeave={handleProjectLeave}
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true }}
+        style={{ willChange: "transform, opacity, background-color" }}
       >
         {projects.map((project) => (
           <motion.img
@@ -254,6 +271,7 @@ export default function SaasShowcase() {
             onMouseEnter={() => handleProjectHover(project)}
             onClick={() => handleProjectClick(project)}
             whileTap={{ scale: 0.95 }}
+            style={{ willChange: "transform, opacity" }}
           />
         ))}
       </motion.div>
@@ -267,6 +285,7 @@ export default function SaasShowcase() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+            style={{ willChange: "transform, opacity" }}
           >
             <div className="w-fit h-fit px-4 pb-[6px] pt-[7px] bg-hover rounded-full flex items-center justify-center">
               {isMobile ? (
@@ -293,6 +312,9 @@ export default function SaasShowcase() {
       <motion.div 
         className="relative w-full h-auto aspect-[1440/890] bg-bg border border-hover rounded-2xl mt-4 overflow-hidden"
         variants={imageContainerVariants}
+        initial="hidden"
+        animate={imageContainerVisible ? "visible" : "hidden"}
+        style={{ willChange: "transform, opacity" }}
       >
         {/* Base image that stays visible */}
         <img
@@ -312,6 +334,7 @@ export default function SaasShowcase() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ willChange: "opacity" }}
           />
         </AnimatePresence>
         
@@ -324,6 +347,7 @@ export default function SaasShowcase() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 12, opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+              style={{ willChange: "transform, opacity" }}
             >
               <div className="flex flex-wrap w-full items-center justify-center gap-6 max-[601px]:gap-3 text-sm">
                 <div className="flex items-center gap-2">
