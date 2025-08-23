@@ -89,6 +89,21 @@
     <link rel="stylesheet" crossorigin href="/assets/index-6xL37htd.css">
   </head>
   <body>
+    <!-- Handle routing from 404 redirects -->
+    <script>
+      // Check if there's an originalPath parameter from 404.html
+      var urlParams = new URLSearchParams(window.location.search);
+      var originalPath = urlParams.get('originalPath');
+      
+      if (originalPath) {
+        // Remove the originalPath parameter from the URL
+        urlParams.delete('originalPath');
+        var newUrl = originalPath + (urlParams.toString() ? '?' + urlParams.toString() : '');
+        
+        // Update the URL without reloading the page
+        window.history.replaceState(null, null, newUrl);
+      }
+    </script>
     <div id="root"></div>
   </body>
 </html>

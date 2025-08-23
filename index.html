@@ -87,6 +87,21 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; connect-src 'self' https:;">
   </head>
   <body>
+    <!-- Handle routing from 404 redirects -->
+    <script>
+      // Check if there's an originalPath parameter from 404.html
+      var urlParams = new URLSearchParams(window.location.search);
+      var originalPath = urlParams.get('originalPath');
+      
+      if (originalPath) {
+        // Remove the originalPath parameter from the URL
+        urlParams.delete('originalPath');
+        var newUrl = originalPath + (urlParams.toString() ? '?' + urlParams.toString() : '');
+        
+        // Update the URL without reloading the page
+        window.history.replaceState(null, null, newUrl);
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
