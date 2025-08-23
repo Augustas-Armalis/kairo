@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const EmailCopyButton = ({ email }) => {
@@ -41,8 +41,7 @@ const EmailCopyButton = ({ email }) => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            style={{ willChange: "transform, opacity" }}
+            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
           >
             Copied!
           </motion.div>
@@ -53,49 +52,14 @@ const EmailCopyButton = ({ email }) => {
 };
 
 const Team = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      transform: "translateY(32px)"
-    },
-    visible: { 
-      opacity: 1, 
-      transform: "translateY(0px)",
-      transition: {
-        duration: 0.9,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
   return (
-    <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center max-[601px]:pt-[150px]">
-      <motion.div 
-        className="flex flex-col items-center w-full max-w-[569px] gap-[10px]"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        style={{ willChange: "opacity" }}
-      >
+    <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center">
+      <div className="flex flex-col items-center w-full max-w-[569px] gap-[10px] ">
 
-        {/* Augustas */}
-        <motion.div 
-          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
-          variants={cardVariants}
-          style={{ willChange: "transform, opacity" }}
-        >
+
+    {/* Augustas */}
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/augustas.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -124,14 +88,14 @@ const Team = () => {
 
           </div>
 
-        </motion.div>
+        </div>
 
-        {/* Matthew */}
-        <motion.div 
-          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
-          variants={cardVariants}
-          style={{ willChange: "transform, opacity" }}
-        >
+
+
+{/* Matthew */}
+
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/matthew.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -157,14 +121,15 @@ const Team = () => {
 
           </div>
 
-        </motion.div>
+        </div>
 
-        {/* Daniel */}
-        <motion.div 
-          className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300"
-          variants={cardVariants}
-          style={{ willChange: "transform, opacity" }}
-        >
+
+
+
+
+{/* Daniel */}
+
+        <div className="flex flex-row gap-[12px] w-full max-w-[569px] bg-bg rounded-[16px] h-[120px] max-[601px]:!h-fit p-[10px] transition-all duration-300">
           
           <div className="bg-hover w-[100px] h-fill overflow-hidden rounded-[10px] flex-shrink-0 "><img src="/images/team/daniel.webp" alt="Pfp" className="w-full h-full object-cover" /></div>
 
@@ -190,11 +155,16 @@ const Team = () => {
 
           </div>
 
-        </motion.div>
+        </div>
 
-      </motion.div>
+
+
+
+
+       
+      </div>
     </div>
-  )
-}
-export default Team
+    )
+  }
+  export default Team
 
