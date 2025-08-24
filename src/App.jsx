@@ -1,5 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -8,22 +7,6 @@ import Team from './pages/Team'
 import Acquire from './pages/Acquire'
 
 function App() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if there's a redirect parameter from 404.html
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectPath = urlParams.get('redirect');
-    
-    if (redirectPath) {
-      // Remove the redirect parameter from the URL
-      urlParams.delete('redirect');
-      const newUrl = redirectPath + (urlParams.toString() ? '?' + urlParams.toString() : '');
-      
-      // Navigate to the correct route
-      navigate(newUrl, { replace: true });
-    }
-  }, [navigate]);
 
   return (
     <div>
