@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import ScrollProvider from './components/ScrollProvider.jsx'
 import App from './App.jsx'
 import './index.css'
@@ -20,10 +21,12 @@ if (redirectPath) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ScrollProvider>
-        <App />
-      </ScrollProvider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollProvider>
+          <App />
+        </ScrollProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>,
 )

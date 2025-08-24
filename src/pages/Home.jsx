@@ -1,32 +1,23 @@
 import { Link } from 'react-router-dom'
 import SaasShowcase from '../components/SaasShowcase.jsx'
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const Home = () => {
-  useEffect(() => {
-    // Update meta tags for SEO
-    document.title = 'Kairo - We build cool SaaS and make it work';
-    
-    // Update Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', 'Kairo - We build cool SaaS and make it work');
-    
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
-    
-    // Update Twitter tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', 'Kairo - We build cool SaaS and make it work');
-    
-    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
-    
-    // Update canonical URL
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', 'https://kairostudio.co/');
-  }, []);
   return (
-    <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
+    <>
+      <Helmet>
+        <title>Kairo - We build cool SaaS and make it work</title>
+        <meta name="description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
+        <meta property="og:title" content="Kairo" />
+        <meta property="og:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
+        <meta property="og:image" content="https://kairostudio.co/images/ogimage.webp" />
+        <meta property="og:url" content="https://kairostudio.co/" />
+        <meta name="twitter:title" content="Kairo" />
+        <meta name="twitter:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
+        <meta name="twitter:image" content="https://kairostudio.co/images/ogimage.webp" />
+        <link rel="canonical" href="https://kairostudio.co/" />
+      </Helmet>
+      <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
       <div className="flex flex-col items-center w-full max-w-[569px]">
     
         <h1 className="text-[52px] text-center leading-[120%] tracking-[-0.035em] font-[520] max-w-[500px] max-[593px]:text-4xl max-[593px]:max-w-[320px] capitalize">We build cool SaaS And make It work</h1>
@@ -47,8 +38,9 @@ const Home = () => {
           <SaasShowcase />
         </div>
         
+              </div>
       </div>
-    </div>
+    </>
   )
 }
 
