@@ -1,15 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/projects';
-import useMetaTags from '../hooks/useMetaTags.js';
 
 const Ventures = () => {
-  useMetaTags({
-    title: 'Our Ventures - Kairo',
-    description: 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.',
-    ogImage: 'https://kairostudio.co/images/ogimage.webp',
-    canonicalUrl: 'https://kairostudio.co/ventures'
-  });
+  useEffect(() => {
+    // Update meta tags for SEO
+    document.title = 'Our Ventures - Kairo';
+    
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', 'Our Ventures - Kairo');
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
+    
+    // Update Twitter tags
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', 'Our Ventures - Kairo');
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
+    
+    // Update canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://kairostudio.co/ventures');
+  }, []);
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import useMetaTags from '../hooks/useMetaTags.js';
 
 const EmailCopyButton = ({ email }) => {
   const [copied, setCopied] = useState(false);
@@ -53,12 +52,28 @@ const EmailCopyButton = ({ email }) => {
 };
 
 const Team = () => {
-  useMetaTags({
-    title: 'Our Team - Kairo',
-    description: 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.',
-    ogImage: 'https://kairostudio.co/images/ogimage.webp',
-    canonicalUrl: 'https://kairostudio.co/team'
-  });
+  useEffect(() => {
+    // Update meta tags for SEO
+    document.title = 'Our Team - Kairo';
+    
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', 'Our Team - Kairo');
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
+    
+    // Update Twitter tags
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', 'Our Team - Kairo');
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) twitterDescription.setAttribute('content', 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.');
+    
+    // Update canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://kairostudio.co/team');
+  }, []);
 
   return (
     <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center">
