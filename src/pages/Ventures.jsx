@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/projects';
+import useMetaTags from '../hooks/useMetaTags.js';
 
 const Ventures = () => {
+  useMetaTags({
+    title: 'Our Ventures - Kairo',
+    description: 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.',
+    ogImage: 'https://kairostudio.co/images/ogimage.webp',
+    canonicalUrl: 'https://kairostudio.co/ventures'
+  });
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);

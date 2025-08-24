@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useMetaTags from '../hooks/useMetaTags.js';
 
 const EmailCopyButton = ({ email }) => {
   const [copied, setCopied] = useState(false);
@@ -52,6 +53,13 @@ const EmailCopyButton = ({ email }) => {
 };
 
 const Team = () => {
+  useMetaTags({
+    title: 'Our Team - Kairo',
+    description: 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.',
+    ogImage: 'https://kairostudio.co/images/ogimage.webp',
+    canonicalUrl: 'https://kairostudio.co/team'
+  });
+
   return (
     <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center">
       <div className="flex flex-col items-center w-full max-w-[569px] gap-[10px] ">

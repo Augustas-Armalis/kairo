@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom'
 import SaasShowcase from '../components/SaasShowcase.jsx'
+import useMetaTags from '../hooks/useMetaTags.js'
 
 const Home = () => {
+  useMetaTags({
+    title: 'Kairo - We build cool SaaS and make it work',
+    description: 'We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology.',
+    ogImage: 'https://kairostudio.co/images/ogimage.webp',
+    canonicalUrl: 'https://kairostudio.co/'
+  });
   return (
     <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
       <div className="flex flex-col items-center w-full max-w-[569px]">
