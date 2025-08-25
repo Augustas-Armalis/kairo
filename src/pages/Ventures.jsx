@@ -119,24 +119,30 @@ const Ventures = () => {
                     exit={{ y: 12, opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
                   >
-                    <div className="flex flex-wrap w-full items-center justify-center gap-2 text-sm">
-                      <div className="flex items-center gap-2 mr-1">
-                        <span className="text-alt">ARR:</span>
-                        <span className="text-white font-medium">{project.stats.arr}</span>
+                    {project.inDevelopment ? (
+                      <div className="flex w-full items-center justify-center text-sm">
+                        <span className="text-white font-medium">Under development, join the waitlist!</span>
                       </div>
-                      <div className="flex items-center gap-2 mr-1">
-                        <span className="text-alt">Valuation:</span>
-                        <span className="text-white font-medium">{project.stats.valuation}</span>
+                    ) : (
+                      <div className="flex flex-wrap w-full items-center justify-center gap-2 text-sm">
+                        <div className="flex items-center gap-2 mr-1">
+                          <span className="text-alt">ARR:</span>
+                          <span className="text-white font-medium">{project.stats.arr}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mr-1">
+                          <span className="text-alt">Valuation:</span>
+                          <span className="text-white font-medium">{project.stats.valuation}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mr-1">
+                          <span className="text-alt">MRR:</span>
+                          <span className="text-white font-medium">{project.stats.mrr}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mr-1">
+                          <span className="text-alt">Users:</span>
+                          <span className="text-white font-medium">{project.stats.users}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 mr-1">
-                        <span className="text-alt">MRR:</span>
-                        <span className="text-white font-medium">{project.stats.mrr}</span>
-                      </div>
-                      <div className="flex items-center gap-2 mr-1">
-                        <span className="text-alt">Users:</span>
-                        <span className="text-white font-medium">{project.stats.users}</span>
-                      </div>
-                    </div>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>

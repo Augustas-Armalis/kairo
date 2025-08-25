@@ -1,110 +1,44 @@
 export const projects = [
   {
     id: 1,
-    name: "Inkflow",
-    popupTextMobile: "Inkflow.com",
-    description: "Advanced business management",
-    logo: "/images/product-logos/inkflow.png",
+    name: "Lunor",
+    popupTextMobile: "Lunor.design",
+    description: "World-class designs library",
+    logo: "/images/product-logos/lunor.webp",
     images: [
-      "/images/products/inkflow/1.png",
-      "/images/products/inkflow/2.png",
+      "/images/products/lunor/thumbnail.webp",
+      "/images/products/lunor/1.webp",
+      "/images/products/lunor/2.webp",
+      "/images/products/lunor/3.webp",
+      "/images/products/lunor/4.webp",
     ],
     stats: {
-      users: "50K+",
-      arr: "$2.5M",
-      mrr: "$208K",
-      valuation: "$25M"
+      users: "50+",
+      arr: "$1.5k+",
+      mrr: "$100+",
+      valuation: "$10k+"
     },
-    link: "https://example.com"
+    inDevelopment: false,
+    link: "https://lunor.design"
   },
-  {
-    id: 2,
-    name: "Orren",
-    popupTextMobile: "Orren.com",
-    description: "Intelligent data insights",
-    logo: "/images/product-logos/orren.png",
-    images: [
-      "/images/products/orren/1.png",
-      "/images/products/orren/2.png",
-    ],
-    stats: {
-      users: "25K+",
-      arr: "$1.8M",
-      mrr: "$150K",
-      valuation: "$18M"
-    },
-    link: "https://example.com"
-  },
-  {
-    id: 3,
-    name: "Luminor",
-    popupTextMobile: "Luminor.com",
-    description: "Seamless team collaboration",
-    logo: "/images/product-logos/luminor.png",
-    images: [
-      "/images/products/luminor/1.png",
-      "/images/products/luminor/2.png",
-    ],
-    stats: {
-      users: "75K+",
-      arr: "$3.2M",
-      mrr: "$267K",
-      valuation: "$32M"
-    },
-    link: "https://example3.com"
-  },
-  {
-    id: 4,
-    name: "Flowzy",
-    popupTextMobile: "Flowzy.com",
-    description: "Customer relationship",
-    logo: "/images/product-logos/flowzy.png",
-    images: [
-      "/images/products/flowzy/1.png",
-      "/images/products/flowzy/2.png",
-    ],
-    stats: {
-      users: "40K+",
-      arr: "$2.1M",
-      mrr: "$175K",
-      valuation: "$21M"
-    },
-    link: "https://example4.com"
-  },
-  {
-    id: 5,
-    name: "Strivio",
-    popupTextMobile: "Strivio.com",
-    description: "Secure payment solutions",
-    logo: "/images/product-logos/strivio.png",
-    images: [
-      "/images/products/strivio/1.png",
-      "/images/products/strivio/2.png",
-    ],
-    stats: {
-      users: "60K+",
-      arr: "$2.8M",
-      mrr: "$233K",
-      valuation: "$28M"
-    },
-    link: "https://example5.com"
-  },
-  {
-    id: 6,
-    name: "Astrel",
-    popupTextMobile: "Astrel.com",
-    description: "Secure payment solutions",
-    logo: "/images/product-logos/astrel.png",
-    images: [
-      "/images/products/astrel/1.png",
-      "/images/products/astrel/2.png",
-    ],
-    stats: {
-      users: "60K+",
-      arr: "$2.8M",
-      mrr: "$233K",
-      valuation: "$28M"
-    },
-    link: "https://example6.com"
-  }
+  // {
+  //   id: 2,
+  //   name: "Classior",
+  //   popupTextMobile: "Classior.study",
+  //   description: "AI Homework tracker for students",
+  //   logo: "/images/product-logos/classior.png",
+  //   images: [
+  //     "/images/products/orren/1.png",
+  //     "/images/products/orren/2.png",
+  //   ],
+  //   stats: {
+  //     users: "25K+",
+  //     arr: "$1.8M",
+  //     mrr: "$150K",
+  //     valuation: "$18M"
+  //   },
+  //   inDevelopment: true,
+  //   link: "https://example.com"
+  // },
+  
 ];

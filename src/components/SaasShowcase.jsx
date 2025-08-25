@@ -267,20 +267,26 @@ export default function SaasShowcase() {
               exit={{ y: 12, opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
             >
-              <div className="flex flex-wrap w-full items-center justify-center gap-6 max-[601px]:gap-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-alt">Users:</span>
-                  <span className="text-white font-medium">{activeProject.stats.users}</span>
+              {activeProject.inDevelopment ? (
+                <div className="flex w-full items-center justify-center text-sm">
+                  <span className="text-white font-medium">Under development, join the waitlist!</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-alt">ARR:</span>
-                  <span className="text-white font-medium">{activeProject.stats.arr}</span>
+              ) : (
+                <div className="flex flex-wrap w-full items-center justify-center gap-6 max-[601px]:gap-3 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-alt">Users:</span>
+                    <span className="text-white font-medium">{activeProject.stats.users}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-alt">ARR:</span>
+                    <span className="text-white font-medium">{activeProject.stats.arr}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-alt">Valuation:</span>
+                    <span className="text-white font-medium">{activeProject.stats.valuation}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-alt">Valuation:</span>
-                  <span className="text-white font-medium">{activeProject.stats.valuation}</span>
-                </div>
-              </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
