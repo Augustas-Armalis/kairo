@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 
 const EmailCopyButton = ({ email }) => {
   const [copied, setCopied] = useState(false);
@@ -55,19 +54,8 @@ const EmailCopyButton = ({ email }) => {
 const Team = () => {
   return (
     <>
-      <Helmet>
-        <title>Our Team - Kairo</title>
-        <meta name="description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta property="og:title" content="Our Team - Kairo" />
-        <meta property="og:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta property="og:image" content="https://kairostudio.co/images/ogimage.webp" />
-        <meta property="og:url" content="https://kairostudio.co/team" />
-        <meta name="twitter:title" content="Our Team - Kairo" />
-        <meta name="twitter:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta name="twitter:image" content="https://kairostudio.co/images/ogimage.webp" />
-        <link rel="canonical" href="https://kairostudio.co/team" />
-      </Helmet>
-      <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-fit  px-3  items-center justify-center">
+
+      <div className="flex flex-col w-full h-full min-h-screen max-[601px]:min-h-screen  px-3  items-center justify-center">
       <div className="flex flex-col items-center w-full max-w-[569px] gap-[10px] ">
 
 

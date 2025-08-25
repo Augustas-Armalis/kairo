@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/projects';
-import { Helmet } from 'react-helmet-async';
 
 const Ventures = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -70,18 +69,6 @@ const Ventures = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Our Ventures - Kairo</title>
-        <meta name="description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta property="og:title" content="Our Ventures - Kairo" />
-        <meta property="og:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta property="og:image" content="https://kairostudio.co/images/ogimage.webp" />
-        <meta property="og:url" content="https://kairostudio.co/ventures" />
-        <meta name="twitter:title" content="Our Ventures - Kairo" />
-        <meta name="twitter:description" content="We build cool SaaS And make It work. Holding Venture studio of many World-class startups. Discover innovative solutions and cutting-edge technology." />
-        <meta name="twitter:image" content="https://kairostudio.co/images/ogimage.webp" />
-        <link rel="canonical" href="https://kairostudio.co/ventures" />
-      </Helmet>
       <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
       <div className="flex flex-row flex-wrap gap-[10px] items-center justify-center w-full max-w-[569px]">
 
