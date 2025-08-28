@@ -1,11 +1,6 @@
 
-import { useEffect } from 'react'
 
 const Acquire = () => {
-  // Set page title
-  useEffect(() => {
-    document.title = 'Acquire - Kairo';
-  }, []);
   return (
     <>
 

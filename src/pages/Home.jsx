@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom'
 import SaasShowcase from '../components/SaasShowcase.jsx'
-import { useEffect } from 'react'
 
 const Home = () => {
-  // Set page title
-  useEffect(() => {
-    document.title = 'Kairo - We build cool SaaS and make it work';
-  }, []);
-
   return (
     <>
       <div className="flex flex-col w-full h-full min-h-screen items-center pt-[160px] px-3 max-[601px]:pt-[150px]">
