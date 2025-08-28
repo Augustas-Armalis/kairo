@@ -1,12 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/projects';
+import { useLocation } from 'react-router-dom';
+import { updateMetaTags, resetMetaTags } from '../utils/metaUtils';
 
 const Ventures = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const cardRefs = useRef({});
+  const location = useLocation();
+
+  // Set page title and meta tags
+  useEffect(() => {
+    document.title = 'Kairo Ventures';
+    
+    // Cleanup function to reset meta tags when leaving the page
+    return () => {
+      resetMetaTags();
+    };
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -51,7 +64,16 @@ const Ventures = () => {
     }
   }, [isMobile, activeProject]);
 
-  const handleCardClick = (projectLink) => {
+  const handleCardClick = (projectLink, project) => {
+    // Update meta tags for the specific project
+    updateMetaTags(
+      `${project.name} - Kairo`,
+      project.description,
+      `https://kairostudio.co${project.images[0]}`,
+      projectLink
+    );
+    
+    // Open the project link
     window.open(projectLink, '_blank');
   };
 
@@ -90,7 +112,7 @@ const Ventures = () => {
               }`}
               onMouseEnter={() => handleCardHover(project.id)}
               onMouseLeave={handleCardLeave}
-              onClick={() => handleCardClick(project.link)}
+              onClick={() => handleCardClick(project.link, project)}
             >
               <div className="flex flex-row gap-[10px] items-center w-full h-fit">
                 <img src={project.logo} alt="Logo" className="w-[36px] h-[36px] object-cover rounded-[8px]"/>

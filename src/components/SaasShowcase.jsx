@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/projects.js';
+import { updateMetaTags, resetMetaTags } from '../utils/metaUtils';
 
 export default function SaasShowcase() {
   const [activeProject, setActiveProject] = useState(null);
@@ -38,6 +39,13 @@ export default function SaasShowcase() {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Cleanup meta tags when component unmounts
+  useEffect(() => {
+    return () => {
+      resetMetaTags();
+    };
   }, []);
 
   // Get next random image without repetition
@@ -162,7 +170,13 @@ export default function SaasShowcase() {
         setCurrentImageIndex(0); // Start from first image
       }
     } else {
-      // Desktop: redirect to project link
+      // Desktop: update meta tags and redirect to project link
+      updateMetaTags(
+        `${project.name} - Kairo`,
+        project.description,
+        `https://kairostudio.co${project.images[0]}`,
+        project.link
+      );
       window.open(project.link, '_blank');
     }
   };
